@@ -1,0 +1,16 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 147 83" width="147" height="83">
+	<title>UNBND_RGB_simbolo_bianco</title>
+	<style>
+		.s0 { fill: #ffffff } 
+		.s1 { fill: none } 
+	</style>
+	<g id="Livello_1-2">
+		<g>
+			<g>
+				<path class="s0" d="m84.7 13.5c10.9 4.5 18.6 15.3 18.6 27.8 0 12.6-7.8 23.6-18.9 28h39.8c8-7.8 12.7-17.5 12.7-28 0-10.5-4.7-20.1-12.6-27.9h-39.6z"/>
+				<path class="s0" d="m43 41.3c0-12.5 7.7-23.3 18.6-27.9h-39.7c-7.9 7.8-12.6 17.5-12.6 27.9 0 10.5 4.8 20.2 12.7 28h39.8c-11-4.4-18.9-15.3-18.9-28z"/>
+			</g>
+			<path fill-rule="evenodd" class="s1" d="m-47-43h240.3v168.7h-240.3z"/>
+		</g>
+	</g>
+</svg>

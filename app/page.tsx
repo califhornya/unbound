@@ -6,9 +6,9 @@ export default function Home() {
     <>
       {/* Navigation */}
       <nav className="nav">
-        <Link href="/works">Works</Link>
-        <Link href="/about">About</Link>
-        <Link href="/contact">Contact Us</Link>
+        <Link href="/works">WORKS</Link>
+        <Link href="/about">ABOUT</Link>
+        <Link href="/contact">CONTACT</Link>
       </nav>
 
       {/* Centered Logo */}

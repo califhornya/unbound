@@ -1,36 +1,56 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { type SanityDocument } from "next-sanity";
+import { client } from '@/sanity/lib/client';
 
-const works = [
-  {
-    id: 'urban-echoes',
-    title: 'Urban Echoes',
-    year: '2023',
-    image: '/urban-echoes/urbanechoes.jpg'
-  },
-  {
-    id: 'silent-waves',
-    title: 'Silent Waves',
-    year: '2022',
-    image: '/silent-waves/silentwaves.jpg'
-  },
-  // Add more works...
-];
+const POSTS_QUERY = `*[
+  _type == "danceProject"
+  && defined(slug.current)
+]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt}`;
 
-export default function WorksPage() {
+const options = { next: { revalidate: 30 } };
+
+
+export default async function WorksPage() {
+  const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options);
+
   return (
+    <>
     <div className="pt-12"> {/* Space for fixed nav */}
       {/* Fixed minimal nav (same as homepage) */}
-      <nav className="fixed top-0 left-0 right-0 bg-white z-50 h-12 flex justify-end items-center px-6 border-b">
+      <nav className="nav-space">
+        <div className="logo-nav">
+          <a href="/" className="svg-symbol">
+            <Image
+              src="UNBND_RGB_logo abbreviato_bianco_ed.svg"
+              alt="Logo Symbol"
+              width={280}
+              height={32}
+            />
+          </a>
+        </div>
         <div className="flex gap-6 text-sm">
-          <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
-          <Link href="/contact">Contact</Link>
+          <Link href="/about">ABOUT</Link>
+          <Link href="/contact">CONTACT</Link>
         </div>
       </nav>
 
-      {/* Works grid */}
-      <div className="works-grid">
+      {/* Posts List */}
+      <main className="container mx-auto min-h-screen max-w-3xl p-8 pt-64">
+        {/* <h1 className="text-4xl font-bold mb-8">Posts</h1> */}
+        <ul className="flex flex-col gap-y-4">
+          {posts.map((post) => (
+            <li className="hover:underline" key={post._id}>
+              <Link href={`/${post.slug.current}`}>
+                <h2 className="text-xl font-semibold">{post.title}</h2>
+                <p>{new Date(post.publishedAt).toLocaleDateString()}</p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </main>
+      
+      {/* <div className="works-grid">
         {works.map((work) => (
           <Link 
             key={work.id}
@@ -49,7 +69,8 @@ export default function WorksPage() {
             </div>
           </Link>
         ))}
-      </div>
+      </div> */}
     </div>
+    </>
   );
 }
