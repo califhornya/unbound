@@ -22,10 +22,10 @@ export default async function WorksPage() {
         <div className="logo-nav">
           <a href="/" className="svg-symbol">
             <Image
-              src="UNBND_RGB_logo abbreviato_bianco_ed.svg"
+              src="UNBND_RGB_logo_bianco.svg"
               alt="Logo Symbol"
-              width={280}
-              height={32}
+              width={330}
+              height={64}
             />
           </a>
         </div>
@@ -35,7 +35,7 @@ export default async function WorksPage() {
         </div>
       </nav>
 
-      {/* Posts List */}
+      
       <main className="container mx-auto min-h-screen max-w-3xl p-8 pt-64">
         {/* <h1 className="text-4xl font-bold mb-8">Posts</h1> */}
         <ul className="flex flex-col gap-y-4">
